@@ -31,7 +31,7 @@ export default function Home() {
   }
 
   const displaySkills = getSkills()
-  const totalSkills = 128427
+  const totalSkills = skills.length
 
   return (
     <main className="min-h-screen bg-slate-950 text-white bg-grid">
