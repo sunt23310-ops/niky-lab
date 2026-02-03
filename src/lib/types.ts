@@ -3,67 +3,78 @@ export interface Skill {
   id: string
   name: string
   nameZh: string
+  fileName: string
   description: string
   descriptionZh: string
-  valueProposition: string  // 中文价值说明
+  valueProposition: string
   category: Category
   platform: Platform
   difficulty: Difficulty
+  author: string
+  repo: string
   githubUrl?: string
   docsUrl?: string
   stars: number
-  weeklyGrowth: number      // 周增长
-  monthlyGrowth: number     // 月增长
+  weeklyGrowth: number
+  monthlyGrowth: number
   lastUpdated: string
   tags: string[]
-  tutorial?: string         // 中文使用教程 (Markdown)
-  rating: number            // 用户评分 1-5
+  tutorial?: string
+  rating: number
   reviewCount: number
 }
 
 export type Category = 
-  | 'automation'    // 自动化
-  | 'data'          // 数据处理
-  | 'coding'        // 编程开发
-  | 'writing'       // 写作创作
-  | 'research'      // 研究分析
-  | 'communication' // 通讯集成
-  | 'productivity'  // 效率工具
-  | 'other'         // 其他
+  | 'tools'
+  | 'development'
+  | 'data-ai'
+  | 'business'
+  | 'devops'
+  | 'testing-security'
+  | 'content-media'
+  | 'documentation'
+  | 'research'
+  | 'databases'
+  | 'lifestyle'
+  | 'blockchain'
 
 export type Platform = 
+  | 'claude-code'
+  | 'codex'
   | 'openclaw'
   | 'langchain'
-  | 'autogpt'
-  | 'crewai'
-  | 'universal'     // 通用/多平台
+  | 'universal'
 
 export type Difficulty = 
-  | 'beginner'      // 入门
-  | 'intermediate'  // 中级
-  | 'advanced'      // 高级
+  | 'beginner'
+  | 'intermediate'
+  | 'advanced'
 
 export const categoryLabels: Record<Category, string> = {
-  automation: '🤖 自动化',
-  data: '📊 数据处理',
-  coding: '💻 编程开发',
-  writing: '✍️ 写作创作',
-  research: '🔬 研究分析',
-  communication: '💬 通讯集成',
-  productivity: '⚡ 效率工具',
-  other: '📦 其他',
+  tools: '🔧 工具',
+  development: '💻 开发',
+  'data-ai': '🤖 数据与AI',
+  business: '💼 商业',
+  devops: '⚙️ DevOps',
+  'testing-security': '🔒 测试与安全',
+  'content-media': '📝 内容与媒体',
+  documentation: '📚 文档',
+  research: '🔬 研究',
+  databases: '🗄️ 数据库',
+  lifestyle: '🏠 生活方式',
+  blockchain: '⛓️ 区块链',
 }
 
 export const platformLabels: Record<Platform, string> = {
+  'claude-code': 'Claude Code',
+  codex: 'Codex CLI',
   openclaw: 'OpenClaw',
   langchain: 'LangChain',
-  autogpt: 'AutoGPT',
-  crewai: 'CrewAI',
   universal: '通用',
 }
 
 export const difficultyLabels: Record<Difficulty, string> = {
-  beginner: '🟢 入门',
-  intermediate: '🟡 中级',
-  advanced: '🔴 高级',
+  beginner: '入门',
+  intermediate: '中级',
+  advanced: '高级',
 }
