@@ -8,7 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // 终端风格配色
+        // Bauhaus Primary Colors
+        bauhaus: {
+          red: '#E4002B',
+          blue: '#0055A5',
+          yellow: '#FFD700',
+          black: '#000000',
+          white: '#FFFFFF',
+          gray: '#808080',
+          bg: '#F5F5F0',
+        },
+        // Legacy terminal colors (for compatibility)
         terminal: {
           bg: '#020617',
           card: '#0f172a',
@@ -17,6 +27,10 @@ module.exports = {
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'Fira Code', 'SF Mono', 'Consolas', 'monospace'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+      },
+      borderWidth: {
+        '3': '3px',
       },
       animation: {
         'cursor-blink': 'blink 1s infinite',

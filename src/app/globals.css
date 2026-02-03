@@ -2,323 +2,537 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================
+   BAUHAUS Design System
+   包豪斯设计系统 - 几何现代主义
+   ======================================== */
+
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-rgb: 2, 6, 23;
+  /* Bauhaus Primary Colors - 包豪斯三原色 */
+  --bauhaus-red: #E4002B;
+  --bauhaus-blue: #0055A5;
+  --bauhaus-yellow: #FFD700;
+  --bauhaus-black: #000000;
+  --bauhaus-white: #FFFFFF;
+  --bauhaus-gray: #808080;
+  
+  /* Secondary Colors */
+  --bauhaus-bg: #F5F5F0;
+  --bauhaus-shadow: rgba(0, 0, 0, 0.8);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  color: var(--bauhaus-black);
+  background: var(--bauhaus-bg);
   min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 700; /* Bold typography */
 }
 
-/* 自定义滚动条 */
+/* ========================================
+   GEOMETRIC SHAPES - 几何形状
+   ======================================== */
+
+/* Circle accent */
+.bauhaus-circle {
+  border-radius: 50%;
+  position: relative;
+}
+
+.bauhaus-circle::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: var(--bauhaus-red);
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+}
+
+/* Square accent */
+.bauhaus-square {
+  position: relative;
+}
+
+.bauhaus-square::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: var(--bauhaus-blue);
+  bottom: -15px;
+  left: -15px;
+  border: 3px solid var(--bauhaus-black);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+}
+
+/* Triangle accent */
+.bauhaus-triangle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 26px solid var(--bauhaus-yellow);
+  top: -20px;
+  right: 20px;
+  filter: drop-shadow(3px 3px 0 var(--bauhaus-black));
+}
+
+/* ========================================
+   HARD SHADOWS - 硬阴影效果
+   ======================================== */
+
+.shadow-bauhaus {
+  box-shadow: 8px 8px 0 var(--bauhaus-black);
+}
+
+.shadow-bauhaus-sm {
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+}
+
+.shadow-bauhaus-lg {
+  box-shadow: 12px 12px 0 var(--bauhaus-black);
+}
+
+.shadow-red {
+  box-shadow: 6px 6px 0 var(--bauhaus-red);
+}
+
+.shadow-blue {
+  box-shadow: 6px 6px 0 var(--bauhaus-blue);
+}
+
+.shadow-yellow {
+  box-shadow: 6px 6px 0 var(--bauhaus-yellow);
+}
+
+/* ========================================
+   BORDERS - 边框
+   ======================================== */
+
+.border-bauhaus {
+  border: 4px solid var(--bauhaus-black);
+}
+
+.border-bauhaus-thick {
+  border: 6px solid var(--bauhaus-black);
+}
+
+.border-primary {
+  border-left: 8px solid var(--bauhaus-red);
+  border-top: 4px solid var(--bauhaus-blue);
+  border-right: 8px solid var(--bauhaus-yellow);
+  border-bottom: 4px solid var(--bauhaus-black);
+}
+
+/* ========================================
+   CARDS - 卡片样式
+   ======================================== */
+
+.bauhaus-card {
+  background: var(--bauhaus-white);
+  border: 4px solid var(--bauhaus-black);
+  box-shadow: 8px 8px 0 var(--bauhaus-black);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.bauhaus-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 var(--bauhaus-black);
+}
+
+.bauhaus-card-red {
+  background: var(--bauhaus-red);
+  color: var(--bauhaus-white);
+  border: 4px solid var(--bauhaus-black);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+}
+
+.bauhaus-card-blue {
+  background: var(--bauhaus-blue);
+  color: var(--bauhaus-white);
+  border: 4px solid var(--bauhaus-black);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+}
+
+.bauhaus-card-yellow {
+  background: var(--bauhaus-yellow);
+  color: var(--bauhaus-black);
+  border: 4px solid var(--bauhaus-black);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+}
+
+/* ========================================
+   BUTTONS - 按钮
+   ======================================== */
+
+.btn-bauhaus {
+  background: var(--bauhaus-white);
+  border: 3px solid var(--bauhaus-black);
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+  padding: 12px 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.btn-bauhaus:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+}
+
+.btn-bauhaus:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--bauhaus-black);
+}
+
+.btn-red {
+  background: var(--bauhaus-red);
+  color: var(--bauhaus-white);
+}
+
+.btn-blue {
+  background: var(--bauhaus-blue);
+  color: var(--bauhaus-white);
+}
+
+.btn-yellow {
+  background: var(--bauhaus-yellow);
+  color: var(--bauhaus-black);
+}
+
+/* ========================================
+   TYPOGRAPHY - 字体排版
+   ======================================== */
+
+.bauhaus-heading {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.bauhaus-text-outline {
+  -webkit-text-stroke: 2px var(--bauhaus-black);
+  color: transparent;
+}
+
+/* ========================================
+   ASYMMETRIC LAYOUT - 不对称布局
+   ======================================== */
+
+.asymmetric-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .asymmetric-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .asymmetric-grid-reverse {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+/* ========================================
+   GEOMETRIC DECORATIONS - 几何装饰
+   ======================================== */
+
+.geometric-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.geometric-bg::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: var(--bauhaus-red);
+  border-radius: 50%;
+  opacity: 0.1;
+  top: -100px;
+  right: -100px;
+}
+
+.geometric-bg::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: var(--bauhaus-blue);
+  bottom: -75px;
+  left: -75px;
+  opacity: 0.1;
+  transform: rotate(45deg);
+}
+
+/* ========================================
+   CONSTRUCTIVIST ELEMENTS - 构成主义元素
+   ======================================== */
+
+.constructivist-line {
+  position: relative;
+}
+
+.constructivist-line::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: var(--bauhaus-black);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-2deg);
+  z-index: -1;
+}
+
+/* ========================================
+   ANIMATIONS - 动画
+   ======================================== */
+
+@keyframes slideInBauhaus {
+  from {
+    transform: translate(20px, 20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateSquare {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-slide-bauhaus {
+  animation: slideInBauhaus 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-rotate {
+  animation: rotateSquare 20s linear infinite;
+}
+
+.animate-bounce-bauhaus {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ========================================
+   HOVER EFFECTS - 悬停效果
+   ======================================== */
+
+.hover-grow {
+  transition: transform 0.2s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);
+}
+
+.hover-shift {
+  transition: all 0.2s ease;
+}
+
+.hover-shift:hover {
+  transform: translate(-3px, -3px);
+}
+
+/* ========================================
+   COLOR BLOCKS - 色块
+   ======================================== */
+
+.color-block-red {
+  background: var(--bauhaus-red);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bauhaus-black);
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+}
+
+.color-block-blue {
+  background: var(--bauhaus-blue);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bauhaus-black);
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+}
+
+.color-block-yellow {
+  background: var(--bauhaus-yellow);
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--bauhaus-black);
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+}
+
+/* ========================================
+   TAGS - 标签
+   ======================================== */
+
+.tag-bauhaus {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 2px solid var(--bauhaus-black);
+  background: var(--bauhaus-white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 2px 2px 0 var(--bauhaus-black);
+  transition: all 0.15s ease;
+}
+
+.tag-bauhaus:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--bauhaus-black);
+}
+
+/* ========================================
+   HEADER / NAVIGATION - 导航栏
+   ======================================== */
+
+.nav-bauhaus {
+  background: var(--bauhaus-white);
+  border-bottom: 4px solid var(--bauhaus-black);
+  position: relative;
+}
+
+.nav-bauhaus::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bauhaus-red) 0px,
+    var(--bauhaus-red) 20px,
+    var(--bauhaus-blue) 20px,
+    var(--bauhaus-blue) 40px,
+    var(--bauhaus-yellow) 40px,
+    var(--bauhaus-yellow) 60px
+  );
+}
+
+/* ========================================
+   FOOTER - 页脚
+   ======================================== */
+
+.footer-bauhaus {
+  background: var(--bauhaus-black);
+  color: var(--bauhaus-white);
+  border-top: 8px solid var(--bauhaus-yellow);
+  position: relative;
+}
+
+.footer-bauhaus::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--bauhaus-red);
+}
+
+/* ========================================
+   INPUT / FORM - 表单元素
+   ======================================== */
+
+.input-bauhaus {
+  border: 3px solid var(--bauhaus-black);
+  padding: 12px 16px;
+  font-weight: 600;
+  background: var(--bauhaus-white);
+  box-shadow: 4px 4px 0 var(--bauhaus-black);
+  transition: all 0.15s ease;
+}
+
+.input-bauhaus:focus {
+  outline: none;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--bauhaus-black);
+  border-color: var(--bauhaus-blue);
+}
+
+/* ========================================
+   SCROLLBAR - 滚动条
+   ======================================== */
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bauhaus-bg);
+  border-left: 3px solid var(--bauhaus-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 3px;
+  background: var(--bauhaus-red);
+  border: 2px solid var(--bauhaus-black);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--bauhaus-blue);
 }
 
-/* 代码风格选择 */
+/* ========================================
+   SELECTION - 选中效果
+   ======================================== */
+
 ::selection {
-  background: rgba(34, 211, 238, 0.3);
-  color: white;
+  background: var(--bauhaus-yellow);
+  color: var(--bauhaus-black);
 }
 
-/* 渐入动画 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* ========================================
+   RESPONSIVE - 响应式
+   ======================================== */
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(34, 211, 238, 0.3); }
-  50% { box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
-}
-
-.animate-slide-in-left {
-  animation: slideInLeft 0.4s ease-out forwards;
-}
-
-.animate-pulse-slow {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* 延迟动画 */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
-
-/* 卡片悬停效果 */
-.card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5),
-              0 0 30px -10px rgba(34, 211, 238, 0.3);
-}
-
-/* 渐变边框 */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #22d3ee, #8b5cf6, #ec4899);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gradient-border:hover::before {
-  opacity: 1;
-}
-
-/* 玻璃态效果 */
-.glass {
-  background: rgba(15, 23, 42, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* 霓虹文字效果 */
-.neon-text {
-  text-shadow: 0 0 10px rgba(34, 211, 238, 0.5),
-               0 0 20px rgba(34, 211, 238, 0.3),
-               0 0 30px rgba(34, 211, 238, 0.2);
-}
-
-/* 按钮悬停效果 */
-.btn-glow {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.btn-glow::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-}
-
-.btn-glow:hover::after {
-  transform: translateX(100%);
-}
-
-.btn-glow:hover {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
-}
-
-/* 标签悬停 */
-.tag-hover {
-  transition: all 0.2s ease;
-}
-
-.tag-hover:hover {
-  transform: scale(1.05);
-  background: rgba(34, 211, 238, 0.2);
-}
-
-/* 星星闪烁 */
-.star-icon {
-  transition: all 0.3s ease;
-}
-
-.star-icon:hover {
-  transform: scale(1.2) rotate(15deg);
-  filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8));
-}
-
-/* 代码块样式 */
-.code-block {
-  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
-}
-
-/* 行号高亮 */
-.line-number {
-  opacity: 0.4;
-  transition: opacity 0.2s ease;
-}
-
-.skill-card:hover .line-number {
-  opacity: 0.8;
-}
-
-/* 头像悬停 */
-.avatar-hover {
-  transition: all 0.3s ease;
-}
-
-.avatar-hover:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(34, 211, 238, 0.5);
-}
-
-/* 分类卡片 */
-.category-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-}
-
-.category-card:hover {
-  transform: translateY(-2px) scale(1.02);
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-}
-
-.category-card:hover .category-icon {
-  transform: scale(1.2);
-}
-
-.category-icon {
-  transition: transform 0.3s ease;
-}
-
-/* FAQ 展开动画 */
-details summary {
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-details summary:hover {
-  background: rgba(34, 211, 238, 0.1);
-}
-
-details[open] summary {
-  background: rgba(34, 211, 238, 0.05);
-}
-
-details .content {
-  animation: fadeInUp 0.3s ease-out;
-}
-
-/* 搜索框聚焦效果 */
-.search-input:focus {
-  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.3);
-}
-
-/* 排序按钮激活状态 */
-.sort-btn-active {
-  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
-  box-shadow: inset 0 0 10px rgba(34, 211, 238, 0.2);
-}
-
-/* 页面过渡 */
-.page-transition {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* 响应式优化 */
 @media (max-width: 768px) {
-  .card-hover:hover {
+  .shadow-bauhaus {
+    box-shadow: 4px 4px 0 var(--bauhaus-black);
+  }
+  
+  .bauhaus-card:hover {
     transform: none;
+    box-shadow: 8px 8px 0 var(--bauhaus-black);
   }
 }
 
-/* 打字机效果 */
-.typewriter {
-  overflow: hidden;
-  border-right: 2px solid #22d3ee;
-  white-space: nowrap;
-  animation: typing 2s steps(30) forwards, blink 0.8s step-end infinite;
-}
+/* ========================================
+   UTILITY CLASSES - 工具类
+   ======================================== */
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
+.bg-bauhaus-red { background: var(--bauhaus-red); }
+.bg-bauhaus-blue { background: var(--bauhaus-blue); }
+.bg-bauhaus-yellow { background: var(--bauhaus-yellow); }
+.bg-bauhaus-black { background: var(--bauhaus-black); }
+.bg-bauhaus-white { background: var(--bauhaus-white); }
 
-@keyframes blink {
-  50% { border-color: transparent; }
-}
+.text-bauhaus-red { color: var(--bauhaus-red); }
+.text-bauhaus-blue { color: var(--bauhaus-blue); }
+.text-bauhaus-yellow { color: var(--bauhaus-yellow); }
 
-/* 背景网格 */
-.bg-grid {
-  background-image: 
-    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
-}
-
-/* 渐变背景 */
-.bg-gradient-radial {
-  background: radial-gradient(ellipse at top, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
-}
+.rotate-45 { transform: rotate(45deg); }
+.rotate-90 { transform: rotate(90deg); }
+.rotate-180 { transform: rotate(180deg); }

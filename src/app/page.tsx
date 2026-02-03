@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { SkillCard } from '@/components/SkillCard'
 import { CategoryGrid } from '@/components/CategoryGrid'
 import { SearchBar } from '@/components/SearchBar'
-import { getTotalRanking, skills, categories, formatNumber } from '@/lib/skills'
+import { getTotalRanking, skills, categories } from '@/lib/skills'
 
 type SortType = 'stars' | 'recent'
 
@@ -34,297 +34,251 @@ export default function Home() {
   const totalSkills = skills.length
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white bg-grid">
-      {/* 背景渐变 */}
-      <div className="fixed inset-0 bg-gradient-radial pointer-events-none" />
-      
-      {/* 导航栏 */}
-      <header className="border-b border-slate-800/50 sticky top-0 glass z-50">
-        <div className="max-w-7xl mx-auto px-4 py-3">
+    <main className="min-h-screen bg-bauhaus-bg relative">
+      {/* Geometric Background Decorations */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 right-20 w-32 h-32 bg-bauhaus-red opacity-20 rounded-full shadow-bauhaus" />
+        <div className="absolute bottom-40 left-10 w-24 h-24 bg-bauhaus-blue opacity-20 rotate-45 shadow-bauhaus" />
+        <div className="absolute top-1/2 right-1/3 w-0 h-0 border-l-[40px] border-l-transparent border-r-[40px] border-r-transparent border-b-[70px] border-b-bauhaus-yellow opacity-20" />
+      </div>
+
+      {/* Navigation - Bauhaus Style */}
+      <header className="nav-bauhaus sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <a href="/" className="flex items-center gap-2 font-mono group">
-              <span className="text-green-400 group-hover:text-green-300 transition-colors">ready</span>
-              <span className="text-slate-500">~/</span>
-              <span className="text-white font-bold group-hover:text-cyan-400 transition-colors">skillhub</span>
+            {/* Logo with Geometric Shapes */}
+            <a href="/" className="flex items-center gap-3 group">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-bauhaus-red border-3 border-bauhaus-black shadow-bauhaus-sm group-hover:animate-rotate" />
+                <div className="w-8 h-8 bg-bauhaus-blue border-3 border-bauhaus-black shadow-bauhaus-sm rounded-full" />
+                <div className="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[28px] border-b-bauhaus-yellow border-3" />
+              </div>
+              <span className="bauhaus-heading text-2xl tracking-tight">SKILLHUB</span>
             </a>
 
-            {/* 导航 */}
-            <nav className="hidden md:flex items-center gap-1">
-              <a href="/categories" className="px-3 py-1.5 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg font-mono text-sm flex items-center gap-2 transition-all">
-                <span className="text-cyan-500">$</span>
-                <span>cd</span>
-                <span className="text-slate-600">/categories</span>
+            {/* Navigation Buttons */}
+            <nav className="hidden md:flex items-center gap-4">
+              <a href="/categories" className="btn-bauhaus btn-yellow text-sm">
+                CATEGORIES
               </a>
-              <a href="/docs" className="px-3 py-1.5 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg font-mono text-sm flex items-center gap-2 transition-all">
-                <span className="text-cyan-500">$</span>
-                <span>man</span>
-                <span className="text-slate-600">docs</span>
+              <a href="/docs" className="btn-bauhaus btn-blue text-sm">
+                DOCS
               </a>
             </nav>
 
-            {/* 右侧 */}
+            {/* GitHub Link */}
             <div className="flex items-center gap-3">
               <a 
                 href="https://github.com/sunt23310-ops/niky-lab"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-slate-400 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all"
+                className="w-10 h-10 flex items-center justify-center bg-bauhaus-black hover:bg-bauhaus-red transition-colors border-3 border-bauhaus-black shadow-bauhaus-sm"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
               </a>
-              <span className="text-xs text-slate-500 font-mono px-2 py-1 bg-slate-800/50 rounded">ZH</span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Hero 区域 */}
-      <section className="relative border-b border-slate-800/50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="animate-fade-in-up bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
-            {/* 标签栏 */}
-            <div className="flex items-center gap-2 px-5 py-3 bg-slate-800/50 border-b border-slate-700/50">
-              <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-red-500"></span>
-                <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-                <span className="w-3 h-3 rounded-full bg-green-500"></span>
-              </div>
-              <span className="text-cyan-400 font-mono text-sm ml-3">skills.marketplace</span>
-              <span className="text-slate-600 font-mono text-xs">// main.ts</span>
-            </div>
+      {/* Hero Section - Constructivist Style */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bauhaus-card p-8 md:p-12 relative animate-slide-bauhaus geometric-bg">
+            {/* Decorative Elements */}
+            <div className="absolute top-4 right-4 w-12 h-12 bg-bauhaus-red border-3 border-bauhaus-black shadow-bauhaus-sm" />
+            <div className="absolute bottom-4 left-4 w-16 h-16 bg-bauhaus-blue border-3 border-bauhaus-black rounded-full shadow-bauhaus-sm" />
             
-            {/* 内容 */}
-            <div className="p-8 font-mono">
-              <h1 className="text-3xl md:text-4xl font-bold mb-3 neon-text">
-                <span className="text-slate-500">&gt;</span> Agent Skills 中文站
+            <div className="relative z-10">
+              <h1 className="bauhaus-heading text-4xl md:text-6xl mb-6">
+                AGENT SKILLS
+                <span className="block text-bauhaus-red">中文站</span>
               </h1>
-              <p className="text-slate-400 mb-8 text-lg">
-                <span className="text-slate-500">&gt;</span> 基于开放的 SKILL.md 生态系统
-              </p>
               
-              <div className="space-y-3 text-sm md:text-base">
-                <div className="flex items-center gap-2 animate-slide-in-left" style={{ animationDelay: '0.2s' }}>
-                  <span className="text-purple-400">const</span>
-                  <span className="text-cyan-400">skills</span>
-                  <span className="text-slate-500">=</span>
-                  <span className="text-amber-400 text-xl font-bold">{totalSkills.toLocaleString()}</span>
-                  <span className="text-slate-500">;</span>
+              <p className="text-xl md:text-2xl font-bold mb-8 max-w-2xl">
+                基于开放的 SKILL.MD 生态系统
+              </p>
+
+              <div className="flex flex-wrap items-center gap-6 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="color-block-red" />
+                  <div>
+                    <div className="text-3xl font-black">{totalSkills}</div>
+                    <div className="text-sm font-bold uppercase">Skills</div>
+                  </div>
                 </div>
-                <div className="text-slate-600 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
-                  // 发现来自 GitHub 的开源 Agent Skills
+                
+                <div className="flex items-center gap-3">
+                  <div className="color-block-blue" />
+                  <div>
+                    <div className="text-3xl font-black">{categories.length}</div>
+                    <div className="text-sm font-bold uppercase">Categories</div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3">
+                  <div className="color-block-yellow" />
+                  <div>
+                    <div className="text-3xl font-black">OPEN</div>
+                    <div className="text-sm font-bold uppercase">Source</div>
+                  </div>
                 </div>
               </div>
-              
-              <div className="mt-8 p-5 bg-slate-800/30 rounded-xl border border-slate-700/30 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-                <div className="text-slate-500 text-sm">/**</div>
-                <div className="text-slate-400 text-sm pl-3 leading-relaxed">
-                  * 🔍 AI 语义搜索或关键字筛选<br/>
-                  * 📁 按分类浏览，按热度排序<br/>
-                  * 📦 所有技能采用开放的 SKILL.md 标准
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm font-bold">
+                <div className="bauhaus-card-blue p-4">
+                  <div className="text-2xl mb-2">🔍</div>
+                  <div>AI 语义搜索或关键字筛选</div>
                 </div>
-                <div className="text-slate-500 text-sm">*/</div>
+                <div className="bauhaus-card-red p-4">
+                  <div className="text-2xl mb-2">📁</div>
+                  <div>按分类浏览，按热度排序</div>
+                </div>
+                <div className="bauhaus-card-yellow p-4">
+                  <div className="text-2xl mb-2">📦</div>
+                  <div>所有技能采用开放标准</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 技能列表区域 */}
-      <section className="relative border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          {/* 标题栏 */}
-          <div className="bg-slate-900/80 rounded-t-xl border border-slate-700/50 border-b-0 backdrop-blur">
-            <div className="flex items-center justify-between px-5 py-4">
-              <div className="flex items-center gap-3">
-                <span className="text-cyan-400 font-mono text-sm">skills --list</span>
-                <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full font-mono animate-pulse-slow">ready</span>
+      {/* Skills List Section */}
+      <section className="relative py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="bauhaus-card p-6 mb-8 asymmetric-grid">
+            <div>
+              <h2 className="bauhaus-heading text-3xl mb-2">
+                <span className="text-bauhaus-red">▶</span> 浏览技能
+              </h2>
+              <div className="flex items-center gap-4 text-sm font-bold mt-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-bauhaus-blue">COUNT:</span>
+                  <span className="text-2xl font-black">{displaySkills.length}</span>
+                </div>
               </div>
             </div>
-            <div className="px-5 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <h2 className="text-xl font-bold font-mono">
-                <span className="text-slate-500">&gt;</span> 浏览 Agent Skills
-              </h2>
-              <div className="flex items-center gap-4 text-sm font-mono">
-                <div className="flex items-center gap-2">
-                  <span className="text-cyan-500">$</span>
-                  <span className="text-slate-400">count:</span>
-                  <span className="text-amber-400 font-bold">{displaySkills.length}</span>
-                </div>
-                
-                {/* 排序选择 */}
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-600 hidden sm:inline">--sort</span>
-                  <div className="flex items-center gap-1 bg-slate-800/80 rounded-lg p-1">
-                    <button
-                      onClick={() => setSortType('stars')}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-all ${
-                        sortType === 'stars' ? 'sort-btn-active text-cyan-400' : 'text-slate-500 hover:text-slate-300'
-                      }`}
-                    >
-                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      stars
-                    </button>
-                    <button
-                      onClick={() => setSortType('recent')}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs transition-all ${
-                        sortType === 'recent' ? 'sort-btn-active text-cyan-400' : 'text-slate-500 hover:text-slate-300'
-                      }`}
-                    >
-                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      recent
-                    </button>
-                  </div>
-                </div>
+
+            {/* Sort Buttons */}
+            <div className="flex flex-col gap-3">
+              <div className="text-sm font-bold uppercase mb-2">SORT BY:</div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setSortType('stars')}
+                  className={sortType === 'stars' ? 'btn-bauhaus btn-red' : 'btn-bauhaus'}
+                >
+                  ⭐ STARS
+                </button>
+                <button
+                  onClick={() => setSortType('recent')}
+                  className={sortType === 'recent' ? 'btn-bauhaus btn-blue' : 'btn-bauhaus'}
+                >
+                  🕐 RECENT
+                </button>
               </div>
             </div>
           </div>
 
-          {/* 搜索栏 */}
+          {/* Search Bar */}
           <div className="mb-8">
             <SearchBar onSearch={setSearchQuery} totalSkills={totalSkills} />
           </div>
 
-          {/* 技能网格 */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          {/* Skills Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {displaySkills.map((skill, index) => (
-              <SkillCard
-                key={skill.id}
-                skill={skill}
+              <SkillCard 
+                key={skill.id} 
+                skill={skill} 
                 rank={searchQuery ? undefined : index + 1}
                 index={index}
               />
             ))}
           </div>
 
+          {/* Empty State */}
           {displaySkills.length === 0 && (
-            <div className="text-center py-16 text-slate-500 font-mono">
-              <div className="text-4xl mb-4">🔍</div>
-              <span className="text-cyan-500">$</span> 没有找到匹配的技能
+            <div className="bauhaus-card p-16 text-center">
+              <div className="text-8xl mb-6">🔍</div>
+              <div className="bauhaus-heading text-2xl">NO SKILLS FOUND</div>
+              <div className="mt-4 font-bold">尝试其他搜索关键词</div>
             </div>
           )}
         </div>
       </section>
 
-      {/* 分类区域 */}
-      <section className="relative border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          {/* 标题 */}
-          <div className="bg-slate-900/80 rounded-t-xl border border-slate-700/50 border-b-0 px-5 py-4 backdrop-blur">
-            <div className="flex items-center gap-3 mb-3">
-              <span className="text-cyan-400 font-mono text-sm">categories.json</span>
-              <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full font-mono">ready</span>
-            </div>
-            <h2 className="text-xl font-bold font-mono">
-              <span className="text-slate-500">&gt;</span> 按分类浏览
+      {/* Categories Section */}
+      <section className="relative py-12 bg-bauhaus-white border-t-4 border-bauhaus-black">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bauhaus-card p-6 mb-8 border-primary">
+            <h2 className="bauhaus-heading text-3xl mb-2">
+              <span className="text-bauhaus-blue">■</span> 按分类浏览
             </h2>
-            <p className="text-slate-600 font-mono text-sm mt-2">
-              <span className="text-cyan-500">$</span> 探索 {categories.length} 个分类的 Agent Skills
-            </p>
+            <p className="font-bold">探索 {categories.length} 个分类的 Agent Skills</p>
           </div>
 
-          <div className="bg-slate-900/50 rounded-b-xl border border-slate-700/50 border-t-0 p-5 backdrop-blur">
-            <CategoryGrid />
-          </div>
+          <CategoryGrid />
         </div>
       </section>
 
-      {/* FAQ 区域 */}
-      <section className="relative border-b border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="bg-slate-900/80 rounded-xl border border-slate-700/50 overflow-hidden backdrop-blur">
-            <div className="px-5 py-4 border-b border-slate-700/50">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-cyan-400 font-mono text-sm">FAQ.md</span>
-                <span className="text-slate-600 font-mono text-xs">5 questions</span>
+      {/* Footer - Constructivist Style */}
+      <footer className="footer-bauhaus py-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="bauhaus-heading text-2xl mb-4 text-bauhaus-yellow">
+                SKILLHUB
               </div>
-              <h2 className="text-xl font-bold font-mono">
-                <span className="text-slate-500">#</span> 常见问题
-              </h2>
+              <p className="font-bold text-sm">
+                发现并探索由社区构建的 Agent Skills
+              </p>
             </div>
-            
-            <div className="divide-y divide-slate-700/50">
-              {[
-                { q: '什么是 Agent Skills?', a: 'Agent Skills 是扩展 AI 编程助手功能的模块化能力。每个 skill 由一个包含指令的 SKILL.md 文件以及可选的脚本和模板组成。' },
-                { q: '如何安装 Agent Skill?', a: 'Claude Code：添加到 ~/.claude/skills/（个人）或 .claude/skills/（项目）。OpenAI Codex CLI：添加到 ~/.codex/skills/。' },
-                { q: '这些技能使用安全吗?', a: '本市场的技能来自公共 GitHub 仓库。我们会过滤掉低质量的仓库并扫描基本质量指标，但你应该在安装前始终审查代码。' },
-                { q: '我可以创建并分享自己的技能吗?', a: '可以! 你可以创建自定义 agent skill 并在 GitHub 上分享。基本结构需要一个包含指令的 SKILL.md 文件。' },
-                { q: '本网站与 Anthropic 或 OpenAI 有关联吗?', a: '没有，SkillHub 中文站是一个独立的社区项目。我们从 GitHub 聚合和展示 agent skills 以便于发现。' },
-              ].map((item, i) => (
-                <details key={i} className="group">
-                  <summary className="px-5 py-4 cursor-pointer flex items-center justify-between hover:bg-slate-800/30 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <span className="text-slate-600 font-mono text-sm w-6">{String(i + 1).padStart(2, '0')}</span>
-                      <span className="font-mono text-slate-300 group-hover:text-white transition-colors">Q: {item.q}</span>
-                    </div>
-                    <span className="text-slate-500 group-open:rotate-45 transition-transform duration-300 text-lg">[+]</span>
-                  </summary>
-                  <div className="px-5 pb-5 pl-16 content">
-                    <div className="bg-slate-800/30 rounded-lg p-4 font-mono text-sm">
-                      <div className="text-slate-500">/**</div>
-                      <div className="text-slate-400 pl-2 leading-relaxed">* {item.a}</div>
-                      <div className="text-slate-500">*/</div>
-                    </div>
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="relative border-t border-slate-800/50">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* 关于 */}
             <div>
-              <div className="text-slate-500 font-mono text-sm mb-3">$ cat README.md</div>
-              <h3 className="text-xl font-bold font-mono mb-3 neon-text"># SkillHub 中文站</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">发现并探索由社区构建的 Agent Skills，让 AI 助手更强大</p>
-            </div>
-            
-            {/* 链接 */}
-            <div>
-              <div className="text-slate-500 font-mono text-sm mb-3">$ git remote -v</div>
-              <div className="space-y-3">
-                <a href="https://github.com/sunt23310-ops/niky-lab" className="flex items-center gap-3 text-slate-400 hover:text-white text-sm group transition-colors">
-                  <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  GitHub Repository
+              <div className="font-bold text-sm uppercase mb-4 text-bauhaus-red">
+                LINKS
+              </div>
+              <div className="space-y-2 text-sm font-bold">
+                <a href="https://github.com/sunt23310-ops/niky-lab" className="block hover:text-bauhaus-yellow transition-colors">
+                  → GitHub Repository
+                </a>
+                <a href="/categories" className="block hover:text-bauhaus-yellow transition-colors">
+                  → Browse Categories
+                </a>
+                <a href="/docs" className="block hover:text-bauhaus-yellow transition-colors">
+                  → Documentation
                 </a>
               </div>
             </div>
-            
-            {/* 资源 */}
+
             <div>
-              <div className="text-slate-500 font-mono text-sm mb-3">$ ls ./资源/</div>
-              <div className="space-y-2 text-sm">
-                <a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-cyan-400 transition-colors">📄 Claude Code 文档</a>
-                <a href="https://github.com/anthropics/skills" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-cyan-400 transition-colors">📁 官方 Skills</a>
-                <a href="https://skillsmp.com" target="_blank" rel="noopener noreferrer" className="block text-slate-400 hover:text-cyan-400 transition-colors">🌐 Skills Marketplace</a>
+              <div className="font-bold text-sm uppercase mb-4 text-bauhaus-blue">
+                RESOURCES
+              </div>
+              <div className="space-y-2 text-sm font-bold">
+                <a href="https://docs.anthropic.com" className="block hover:text-bauhaus-yellow transition-colors">
+                  → Claude Code Docs
+                </a>
+                <a href="https://github.com/anthropics/skills" className="block hover:text-bauhaus-yellow transition-colors">
+                  → Official Skills
+                </a>
               </div>
             </div>
           </div>
-          
-          <div className="mt-12 pt-8 border-t border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-            <div className="flex items-center gap-3 font-mono">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                <span className="text-green-400">online</span>
-              </span>
-              <span className="text-slate-600">v0.1.0</span>
-              <span className="text-slate-400">SkillHub 中文站</span>
+
+          <div className="border-t-2 border-bauhaus-white pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-4 h-4 bg-bauhaus-red border-2 border-white" />
+              <div className="w-4 h-4 bg-bauhaus-blue border-2 border-white rounded-full" />
+              <div className="w-4 h-4 bg-bauhaus-yellow border-2 border-white" />
             </div>
-            <p className="text-slate-500">
-              © 2026 由 <span className="text-cyan-400">suniky</span> 与 <span className="text-amber-400">niky ⚡</span> 共同打造
+            
+            <p className="text-sm font-bold">
+              © 2026 由 <span className="text-bauhaus-yellow">suniky</span> 与 <span className="text-bauhaus-red">niky</span> 共同打造
             </p>
           </div>
         </div>
