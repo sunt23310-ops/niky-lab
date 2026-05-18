@@ -16,7 +16,7 @@
 
 - [OpenClaw](https://clawdhub.com) — 开源 Agent 框架
 - [LangChain](https://langchain.com) — LLM 应用开发
-- [AutoGPT](https://autogpt.net) — 自主 Agent
+- [AutoGPT](https://agpt.co) — 自主 Agent
 - [CrewAI](https://crewai.com) — 多 Agent 协作
 - 更多持续添加中...
 
